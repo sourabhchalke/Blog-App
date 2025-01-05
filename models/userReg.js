@@ -15,10 +15,10 @@ const userRegister = new mongoose.Schema({
         required:true,
         unique:true
     },
-    profileImg:{
-        type:Image,
-        default:''
-    },
+    // profileImg:{
+    //     type:Image,
+    //     default:'/public/profileimg'
+    // },
     role:{
         type:String,
         enum:["User","Admin"]
