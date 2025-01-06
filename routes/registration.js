@@ -13,32 +13,29 @@ router.post('/registration',async(req,res)=>{
 
     try{
 
-        if(!password || !fullname || !email || !role){
+        if(!req.body){
             res.status(400).send("Please provid details")
         }
 
-        const payload = {
-            fullname:fullname,
-            email:email
-        }
+        // const payload = {
+        //     fullname:fullname,
+        //     email:email
+        // }
 
-        const token = await jwt.sign(payload,SECRET_KEY,{expireIN:"1h"});
-        cookie("token",token);
+        // const token = await jwt.sign(payload,SECRET_KEY,{expireIN:"1h"});
+        // cookie("token",token);
 
         const hashPassword= await bcrypt.hash(password,10);
 
         const createUser=await UserReg.create({fullname,email,password:hashPassword,role});
-        res.render('/home');
+        // res.render('/home');
+        res.send("Register Successfully");
         console.log("Data Inserted Successfull",createUser);
 
     }catch(error){
-        res.status(400).send("Something went wrong").render('/registration');
+        res.status(400).send(error.stack);
+        console.log(error.stack);
     }
-
-    res.send("Register Successfully");
-
-
-
 });
 
 module.exports=router;

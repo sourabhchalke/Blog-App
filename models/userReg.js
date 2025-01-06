@@ -21,7 +21,7 @@ const userRegister = new mongoose.Schema({
     // },
     role:{
         type:String,
-        enum:["User","Admin"]
+        enum:["user","admin"]
     }
 },{collection:'user-register'});
 
