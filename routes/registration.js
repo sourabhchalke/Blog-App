@@ -29,7 +29,7 @@ router.post('/registration',async(req,res)=>{
 
         const createUser=await UserReg.create({fullname,email,password:hashPassword,role});
         // res.render('/home');
-        res.send("Register Successfully");
+        res.redirect('/');
         console.log("Data Inserted Successfull",createUser);
 
     }catch(error){

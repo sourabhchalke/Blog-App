@@ -9,24 +9,25 @@ router.get('/login', (req, res) => {
 
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
-    console.log(email, password);
+    // console.log(email, password);
     try {
 
         const user= await UserReg.findOne({email});
-        console.log(user);
+        // console.log(user);
         if(!user){
             res.status(400).send("User Not Found");
         }
 
-        console.log(password);
-        console.log(user.password);
+        // console.log(password);
+        // console.log(user.password);
         const decodePassword=await bcrypt.compare(password,user.password);
 
         if(!decodePassword){
             res.status(400).send("Incorrect Password");
         }
-
-        res.send("Login Successfull");
+        const name=user.fullname;
+        // res.send("Login Successfull");
+        res.redirect('/');
     } catch (error) {
         console.log(error.stack);
     }

@@ -6,6 +6,7 @@ const mongoose=require('mongoose');
 const app=express();
 
 const register=require('./routes/registration');
+const login=require('./routes/login');
 
 mongoose.connect(process.env.url)
 .then(()=>{
@@ -22,12 +23,9 @@ app.set('view engine','ejs');
 // app.set('views',(path.resolve('./views')));
 
 app.use('/user',register);
+app.use('/user',login);
 
 app.get('/',(req,res)=>{
-    res.send("Get Route");
-})
-
-app.get('/home',(req,res)=>{
     res.render('home.ejs');
 })
 
