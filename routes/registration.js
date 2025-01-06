@@ -33,7 +33,7 @@ router.post('/registration',async(req,res)=>{
         console.log("Data Inserted Successfull",createUser);
 
     }catch(error){
-        res.status(400).send(error.stack);
+        res.status(400).send("Something went wrong! Please try again");
         console.log(error.stack);
     }
 });
