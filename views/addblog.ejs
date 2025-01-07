@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create-Blog</title>
+    <%- include('partials/head') %>
+</head>
+
+<body>
+
+    <%- include('partials/navbar') %>
+
+        <div class="container">
+            <form action="">
+                <div class="mt-4">
+                    <label for="title">Title :</label>
+                    <input type="text" id="title" name="title">
+                </div>
+                <div class="mt-4">
+                    <label for="body">Body :</label>
+                    <textarea class="form-control" placeholder="Write here" name="body" id="body"
+                        style="height: 100px"></textarea>
+                </div>
+                <div class="mt-4">
+                    <label for="coverImage">Cover Image :</label>
+                    <input type="file" id="coverImage" name="coverImage">
+                </div>
+                <div class="mt-4">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <%- include('partials/head') %>
+</body>
+
+</html>
