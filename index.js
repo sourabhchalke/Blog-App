@@ -7,6 +7,7 @@ const app=express();
 
 const register=require('./routes/registration');
 const login=require('./routes/login');
+const addblog=require('./routes/addblog');
 
 mongoose.connect(process.env.url)
 .then(()=>{
@@ -24,6 +25,8 @@ app.set('view engine','ejs');
 
 app.use('/',register);
 app.use('/',login);
+app.use('/',addblog);
+
 
 app.get('/',(req,res)=>{
     res.render('first');
