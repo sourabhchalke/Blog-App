@@ -15,7 +15,9 @@ router.post('/login', async (req, res) => {
         const user= await UserReg.findOne({email});
         // console.log(user);
         if(!user){
-            res.status(400).send("User Not Found");
+            return res.status(400).render('./login',{
+                error:"User Not Found",
+            });
         }
 
         // console.log(password);
@@ -23,13 +25,17 @@ router.post('/login', async (req, res) => {
         const decodePassword=await bcrypt.compare(password,user.password);
 
         if(!decodePassword){
-            res.status(400).send("Incorrect Password");
+           return res.status(400).render('./login',{
+                error:"Incorect Password",
+            });
         }
         const name=user.fullname;
         // res.send("Login Successfull");
-        res.redirect('/');
+       return res.render('home');
     } catch (error) {
-        console.log(error.stack);
+       return res.status(400).render('./login',{
+            error:"Incorect Password",
+        });
     }
 
 })

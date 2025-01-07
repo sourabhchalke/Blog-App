@@ -9,7 +9,6 @@ router.get('/registration',(req,res)=>{
 
 router.post('/registration',async(req,res)=>{
     const {fullname,email,password,role}=req.body;
-    console.log(fullname,email,password,role);
 
     try{
 
@@ -28,9 +27,7 @@ router.post('/registration',async(req,res)=>{
         const hashPassword= await bcrypt.hash(password,10);
 
         const createUser=await UserReg.create({fullname,email,password:hashPassword,role});
-        // res.render('/home');
         res.redirect('/');
-        console.log("Data Inserted Successfull",createUser);
 
     }catch(error){
         res.status(400).send("Something went wrong! Please try again");

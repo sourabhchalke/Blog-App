@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login-Form</title>
+    <%- include('partials/head') %>
 </head>
 <body>
+    <% if(locals.error){%>
+        <div class="alert alert-danger" role="alert">
+            <%= locals.error %>
+        </div>
+      <%}%>
     <form action="login" method="post">
         <h2>Login-Form</h2>
         <label for="email">Username : </label><br><br>
@@ -14,5 +20,7 @@
         <input type="password" id="password" name="password"><br><br>
         <input type="submit" value="Login">
     </form>
+    <%- include('partials/head') %>
 </body>
 </html>
+

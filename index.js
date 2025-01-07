@@ -22,11 +22,15 @@ app.use(morgan('dev'));
 app.set('view engine','ejs');
 // app.set('views',(path.resolve('./views')));
 
-app.use('/user',register);
-app.use('/user',login);
+app.use('/',register);
+app.use('/',login);
 
 app.get('/',(req,res)=>{
-    res.render('home.ejs');
+    res.render('first');
+})
+
+app.get('/logout',(req,res)=>{
+     res.render('first');
 })
 
 app.listen(process.env.PORT,()=>{
